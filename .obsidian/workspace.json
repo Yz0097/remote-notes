@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "cfff9ea9610a5f2b",
+        "id": "437245cce634cad0",
         "type": "tabs",
         "children": [
           {
-            "id": "f4904fe96b3fd98f",
+            "id": "b604a1cb9d9eb6e4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "coding_tools/vim/miniconda.md",
+                "file": "git.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -21,25 +21,12 @@
             }
           },
           {
-            "id": "f6586f864c365615",
+            "id": "2fadaca0d9ffe620",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "coding/java/java.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "690ddfecfc2f2240",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "cpp lambda.md",
+                "file": "game theory/marginal effect.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -47,7 +34,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -113,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "cpp lambda.md",
+                "file": "game theory/marginal effect.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,7 +117,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "cpp lambda.md",
+                "file": "game theory/marginal effect.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -153,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "cpp lambda.md"
+                "file": "game theory/marginal effect.md"
               }
             }
           }
@@ -175,11 +162,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "690ddfecfc2f2240",
+  "active": "2fadaca0d9ffe620",
   "lastOpenFiles": [
-    "agent.md",
+    "game theory/研究报.md",
+    "game theory/marginal effect.md",
     "cpp lambda.md",
     "git.md",
+    "coding_tools/vim/miniconda.md",
+    "coding/java/java.md",
+    "agent.md",
     "wandb.md",
     "Untitled.md",
     "Untitled 2.md",
@@ -198,11 +189,8 @@
     "coding_tools/vim/WSL config.md",
     "coding/data structure/QQ20231020115316.png",
     "coding/data structure/binary tree.md",
-    "coding/java/java.md",
     "deeplearning/linear, softmax, persudo inverse.md",
     "coding/python/vscode config conda env.md",
-    "2023.12 camera.md",
-    "研究生课程/project_sci & hum.md",
     "研究生课程/game theory/NIPS-2017-a-unified-game-theoretic-approach-to-multiagent-reinforcement-learning-Paper trans.pdf",
     "研究生课程/game theory/Shi  - 2022 - Make Smart Decisions Faster Deciding D2D Resource.docx",
     "研究生课程/game theory/Shi  - 2022 - Make Smart Decisions Faster Deciding D2D Resource.pdf",
@@ -210,7 +198,6 @@
     "研究生课程/game theory/present.pptx",
     "研究生课程/game theory/Shi 等 - 2022 - Make Smart Decisions Faster Deciding D2D Resource.pdf",
     "研究生课程/game theory/Shi 等 - 2022 - Make Smart Decisions Faster Deciding D2D Resource.docx",
-    "研究生课程/Untitled.md",
     "coding/java",
     "研究生课程/矩阵论/~$论报告_邵禺哲_23031212059.docx",
     "研究生课程/矩阵论/~$报告.docx",
