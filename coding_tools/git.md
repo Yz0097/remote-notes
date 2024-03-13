@@ -1,3 +1,5 @@
+## 初始化
+
 ```
 root@iZbp1a9zt2ii9pe3pzmagsZ:/# git config --global user.name ziiz
 root@iZbp1a9zt2ii9pe3pzmagsZ:/# git config --global user.email coppton.ii@gmail.com
@@ -8,6 +10,9 @@ user.name=ziiz
 user.email=coppton.ii@gmail.com
 ```
 
+```
+git init <repositroy name>
+```
 ### git 工作区域
 工作区域 - 暂存区 - 本地仓库     
 working dic - index - local repesitory
@@ -64,8 +69,9 @@ git rebase dev
 
 main hotfix release devlop feature
 
-feature 从 dev 中分离
+feature 从 dev 中分离    
 dev中发布 release 进行测试，测试后合并到 main
 
-GIthubFlow
-Pull Request
+### Github Flow    
+Pull   
+Request
