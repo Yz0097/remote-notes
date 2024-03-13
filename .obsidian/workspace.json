@@ -32,9 +32,22 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "6ee288cf40711db1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "test.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -100,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "game theory/marginal effect.md",
+                "file": "test.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +130,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "game theory/marginal effect.md",
+                "file": "test.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -140,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "game theory/marginal effect.md"
+                "file": "test.md"
               }
             }
           }
@@ -162,10 +175,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2fadaca0d9ffe620",
+  "active": "6ee288cf40711db1",
   "lastOpenFiles": [
-    "game theory/研究报.md",
     "game theory/marginal effect.md",
+    "test.md",
+    "game theory/研究报.md",
     "cpp lambda.md",
     "git.md",
     "coding_tools/vim/miniconda.md",
@@ -190,7 +204,6 @@
     "coding/data structure/QQ20231020115316.png",
     "coding/data structure/binary tree.md",
     "deeplearning/linear, softmax, persudo inverse.md",
-    "coding/python/vscode config conda env.md",
     "研究生课程/game theory/NIPS-2017-a-unified-game-theoretic-approach-to-multiagent-reinforcement-learning-Paper trans.pdf",
     "研究生课程/game theory/Shi  - 2022 - Make Smart Decisions Faster Deciding D2D Resource.docx",
     "研究生课程/game theory/Shi  - 2022 - Make Smart Decisions Faster Deciding D2D Resource.pdf",
