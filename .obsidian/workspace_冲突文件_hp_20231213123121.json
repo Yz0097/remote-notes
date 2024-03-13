@@ -1,0 +1,202 @@
+{
+  "main": {
+    "id": "35c84d627f6108fb",
+    "type": "split",
+    "children": [
+      {
+        "id": "bb7d50dfeebb5c3c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "379e5781fe2adbf8",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "c163ee9fb7f561f3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Untitled 1.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9af69ad163e4c113",
+    "type": "split",
+    "children": [
+      {
+        "id": "e43cc98ee0c050a2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fd6c99579ea50b91",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "3cc0197a8809bd7c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          },
+          {
+            "id": "0488900de1dc66c4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": " ",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 301.5
+  },
+  "right": {
+    "id": "8f353a74fd4b8f02",
+    "type": "split",
+    "children": [
+      {
+        "id": "e724da28f10bf9f2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5f6767311f3c94ba",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Untitled 1.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "bd212e7d277c550f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Untitled 1.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "0d39b65ca9bee5e7",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "434d545e69158713",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Untitled 1.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "graph:Open graph view": false,
+      "switcher:Open quick switcher": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "c163ee9fb7f561f3",
+  "lastOpenFiles": [
+    "Untitled.md",
+    "SYCL buffer.md",
+    "cpp lambda.md",
+    "zotero/zhanFreeMarketMultiLeader2020.md",
+    "vim/WSL配置.md",
+    "vim/vim.md",
+    "pic/Pasted image 20230828012842.png",
+    "coding/techinical skill/STL.md",
+    "coding/python/tempfile.md",
+    "coding/markdown and latax/Markdown grammar.md",
+    "coding/data structure/二叉树.md",
+    "杂项/阅读英文文献.md",
+    "reinforcement learning/c1.md",
+    "raspberry pi/LoRA.md",
+    "Untitled 1.md",
+    "科学精神与人文精神.md",
+    "HPC/works/第四次作业&大作业/Untitled 1.md",
+    "HPC/Data Parallel C   Ma.pdf",
+    "杂项/阅读英文文献.md.baiduyun.uploading.cfg",
+    "game theory/type of game.md",
+    "game theory/Mobility of MU.md",
+    "game theory/MADDPG.md",
+    "game theory/MADDPG.md.baiduyun.uploading.cfg",
+    "game theory/边际效应递减.md.baiduyun.uploading.cfg",
+    "game theory/边际效应递减.md",
+    "杂项",
+    "阅读英文文献.md.baiduyun.uploading.cfg",
+    "Untitled 1.md.baiduyun.uploading.cfg",
+    "cpp lambda.md.baiduyun.uploading.cfg",
+    "SYCL buffer.md.baiduyun.uploading.cfg",
+    "zotero/我的文库.bib.baiduyun.uploading.cfg",
+    "HPC/works/第三次/Untitled.md",
+    "HPC/works/第三次/第三次.md",
+    "HPC/works/第二次.md",
+    "reinforcement learning/c3.md",
+    "reinforcement learning/c2.md",
+    "pic/Pasted image 20230828182741.png",
+    "pic/Pasted image 20230828013559.png",
+    "Untitled.canvas",
+    "pic/Pasted image 20230828014334.png"
+  ]
+}

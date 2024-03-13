@@ -1,0 +1,12 @@
+{
+  "accentColor": "#b3e576",
+  "theme": "obsidian",
+  "cssTheme": "Minimal",
+  "interfaceFontFamily": "",
+  "monospaceFontFamily": "Cascadia Mono",
+  "textFontFamily": "Consolas",
+  "nativeMenus": false,
+  "translucency": false,
+  "showViewHeader": true,
+  "baseFontSize": 17
+}
