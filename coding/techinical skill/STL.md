@@ -25,11 +25,12 @@ q.front();
 # 容器适配器
 可以理解为基础类型的派生类
 
-  容器适配器   | functions
-:------- :| :-----:
-stack  | empty,size,push,pop,top,emplace,swap(stack<T>,stack<T>)
+| 容器适配器 |                        functions                        |     |
+| :---: | :-----------------------------------------------------: | --- |
+| stack | empty,size,push,pop,top,emplace,swap(stack<T>,stack<T>) |     |
 queue  |  empty, size,front,back,push,emplace,push,pop,swap
 priority_queue  | $1
+
 
 
 
@@ -55,4 +56,21 @@ priority_queue<pair<int,int>, vector<pair<int,int>>, mycomparison> q;
 ```
 
 这里的比较函数选用了大于，维护了一个小顶堆，pop时会弹出最小的元素。
+
+
+### 清空vector
+```cpp
+vector<int> test(5);
+
+//1 占用内存不变
+test.clear();
+
+//2 内存不变
+for(auto i = test.begin(); i!= test.end(); i++){
+	test.erase(i);
+}
+
+//3 释放内存
+vector<int> ().swap(test);
+```
 
