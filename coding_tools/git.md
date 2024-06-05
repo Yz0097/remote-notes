@@ -50,9 +50,10 @@ git merge dev //合并dev分支和当前分支
 git log --graph --oneline
 git branch <branch name>//查看分支 or 创建分支
 git branch -d <branch name> //删除已经合并的分支
-gir branch -D <> //强制删除分支
+git branch -D <> //强制删除分支
+git chechout <branch_name>
 ```
-
+git clone 只会克隆master分支, 使用git branch -a 可以查看远程仓库上的所有分支,使用checkout可以切换到远程仓库上的分支(克隆到本地)
 ### 冲突
 merge产生冲突时，修改冲突内容然后提交。     
 中止冲突：
@@ -75,3 +76,8 @@ dev中发布 release 进行测试，测试后合并到 main
 ### Github Flow    
 Pull   
 Request
+
+# windows & linux换行符不一致
+git config --global core.autocrlf false
+
+
