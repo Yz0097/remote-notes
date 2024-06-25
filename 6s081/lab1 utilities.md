@@ -107,3 +107,81 @@ int main(void)
     exit(0);
 }
 ```
+
+出现如下情况:
+```shell
+$ pingpong
+3: received pong
+4: rece$ ived ping
+```
+是由于子进程没有结束输出, 父进程就退出导致的. 在父进程的最后添加
+```C
+wait((int*) 0);
+```
+等待子进程执行结束后再退出
+
+# 4 primes
+
+```C
+void child(int *pl){
+    int n;
+    
+    close(pl[WRITEEND]);////important
+    //without this sentence, only prime 13
+    int if_read = read(pl[READEND], &n, sizeof(int));
+    if(if_read == 0){
+        exit(0);
+    }
+
+    int pr[2];
+    pipe(pr);
+    int pid = fork();
+
+    if(pid == 0){
+        //child
+        child(pr);
+    }else{
+        //parent
+        close(pr[READEND]);
+        printf("prime %d\n", n);
+        //close(p[WRITEEND]);
+        
+        int prime=n;
+        while(read(pl[READEND], &n, sizeof(int)) != 0){
+            if(n%prime != 0){
+                write(pr[WRITEEND], &n, sizeof(int));
+            }
+        }
+        close(pr[WRITEEND]);
+        wait((int*) 0);
+        exit(0);
+    }
+}
+
+
+int main(void){
+    int p[2];
+    pipe(p);
+    int pid = fork();
+
+    if(pid == 0){
+        //child
+        child(p);
+    }else{
+        //parent
+        close(p[READEND]);
+        for(int i = 2; i < 36; i++){
+            write(p[WRITEEND], &i, sizeof(int));
+        }
+        close(p[WRITEEND]);
+        wait((int*) 0);
+    }
+    exit(0);
+}
+```
+
+每次递归以第一个读入的数(最小数)作为素数, 不能被这个数整除的传入下一轮递归.
+如果在递归函数开头不关闭左侧管道的readend,递归会无法继续进行, 卡在prime 13 的位置[TODO]
+
+# find 
+ls.c[https://zhuanlan.zhihu.com/p/669012113]
