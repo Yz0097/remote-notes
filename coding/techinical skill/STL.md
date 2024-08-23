@@ -74,3 +74,19 @@ for(auto i = test.begin(); i!= test.end(); i++){
 vector<int> ().swap(test);
 ```
 
+# string
+string一样适用大量的stl相关操作，例如：
+```cpp
+sting s = "abc";
+s.push_back('d');//此时s = "abcd"
+s.pop_back();//s = "abc", 返回值应为'd'
+```
+特别的有取子串操作：
+```cpp
+sting s = "abc";
+int start = 0;
+int end = 1;
+string tmp = s.substr(start, end - start + 1);
+tmp = "a";
+```
+substr方法，第一个参数开始下标，第二个参数为子串长度
