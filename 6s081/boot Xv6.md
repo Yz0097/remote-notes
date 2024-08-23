@@ -16,7 +16,7 @@ start在机器态下设置
 - supervisor mode -> user mode
 ### userinit()函数
 函数定义在proc.c中,初始化了第一个用户进程. 执行initcode(一段汇编代码)如下:
-```assembly
+```ASM
 auipc  a0, 0
 addi   a0, a0, 36  # a0 = 36 = "\init\0"
 auipc  a1, 0
@@ -27,6 +27,7 @@ add    a7, x0, 2
 ecall              # exec exit
 jal    ra, -8      # exit
 ```
+
 
 ```C
 uchar initcode[] = {

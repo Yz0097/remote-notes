@@ -89,4 +89,15 @@ int end = 1;
 string tmp = s.substr(start, end - start + 1);
 tmp = "a";
 ```
-substr方法，第一个参数开始下标，第二个参数为子串长度
+`substr`方法，第一个参数开始下标，第二个参数为子串长度
+				
+cpp中, 字符串可以使用运算符`+`进行操作, 使用`append`方法与运算符`+=`相同
+```cpp
+string a = "aaa";
+string b = "bbb";
+
+string ab = a + b;//ab = "aaabbb"
+a += b; //a = "aaabbb"
+a.append(b); // a = "aaabbbbbb";
+```
+- `+`方式本质是 `s = new StringBuilder(s).append("a") .toString();`
