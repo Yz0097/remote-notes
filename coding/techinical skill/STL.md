@@ -1,5 +1,6 @@
 #coding
 ## 哈希容器
+[[hash]]
 ### 1.set; unordered_set
 只能使用迭代器进行访问
 ### 2.map; unordered_map
@@ -29,7 +30,7 @@ q.front();
 | :---: | :-----------------------------------------------------: | --- |
 | stack | empty,size,push,pop,top,emplace,swap(stack<T>,stack<T>) |     |
 queue  |  empty, size,front,back,push,emplace,push,pop,swap
-priority_queue  | $1
+priority_queue  | 
 
 
 
@@ -58,6 +59,13 @@ priority_queue<pair<int,int>, vector<pair<int,int>>, mycomparison> q;
 这里的比较函数选用了大于，维护了一个小顶堆，pop时会弹出最小的元素。
 
 
+# vector
+## vector初始化
+```cpp
+vector<bool> used(size/*int size*/, false/*datatype initial_val*/);
+```
+
+
 ### 清空vector
 ```cpp
 vector<int> test(5);
@@ -73,6 +81,7 @@ for(auto i = test.begin(); i!= test.end(); i++){
 //3 释放内存
 vector<int> ().swap(test);
 ```
+
 
 # string
 string一样适用大量的stl相关操作，例如：

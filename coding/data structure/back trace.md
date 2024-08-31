@@ -11,6 +11,7 @@ void traceback(/*回溯参数*/){
 	
 	for(/*按层遍历*/){
 		//插入
+		//进入下一层
 		traceback(/*更新回溯参数*/);
 		//回退插入内容(回溯)
 	}
@@ -78,3 +79,35 @@ void traceback(/*回溯参数*/){
     }
 };
 ```
+
+## 回溯去重
+- 子集 II https://leetcode.cn/problems/subsets-ii/description/
+- 组合总和II https://leetcode.cn/problems/combination-sum-ii/description/
+涉及到回溯去重的问题。注意回溯去重需要先进行排序。
+```cpp
+vector</*datatype*/> res;
+/*datatype*/ path;
+void traceback(/*datatype*/ , vector<bool> &used, int idx/*回溯参数*/){
+	if(/*终止条件*/){
+		res.push_back(path);
+		return;
+	}
+	
+	for(/*按层遍历*/){
+		//去重
+		if(i > 0 && nums[i-1]==nums[i] && used[i-1] == false){//【miss】此处为false而不是true
+			continue;
+		}
+		//插入
+		traceback(/*更新回溯参数*/);
+		//回退插入内容(回溯)
+	}
+}
+```
+## 回溯算法解决排列问题与组合问题
+回溯算法可以解决两种问题：排列和组合。但是解决这两种问题时候有一些区别。  
+#### 排列问题
+https://leetcode.cn/problems/permutations/submissions/559039004/    
+1. 回溯参数中使用`vector<bool> &used`数组
+2. 只有达到树枝的时候会插入结果
+3. 回溯参数无须传递index
