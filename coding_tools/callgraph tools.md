@@ -1,3 +1,4 @@
+#coding #python
 # code2flow
 静态代码检查，根据代码绘制类、函数图像     
 命令行调用：  

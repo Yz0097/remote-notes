@@ -1,3 +1,4 @@
+#coding #vim
 ## insert
 ### 进入insert模式
 1. i insert

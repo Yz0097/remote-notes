@@ -1,4 +1,6 @@
-配置miniconda
+
+#python 
+# 配置miniconda
 ```
 # conda create -p [PATH]
 ```

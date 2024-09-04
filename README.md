@@ -1,3 +1,4 @@
+#git #coding 
 This is a remote repositroy for notes.    
 
 Store it on github for:

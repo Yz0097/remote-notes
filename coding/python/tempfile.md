@@ -1,3 +1,4 @@
+#coding #python
 1. 创建tmpfile
 ```python
 file = tempfile.NamedTemporaryFile()

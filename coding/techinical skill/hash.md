@@ -1,3 +1,4 @@
+#coding #hash 
 ## cpp下哈希数据结构
 ```cpp
 unordered_set<int> uset;

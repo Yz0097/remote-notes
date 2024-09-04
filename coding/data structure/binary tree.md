@@ -1,3 +1,4 @@
+#data_struct_tree #coding
 # 二叉树的存储方式
 ## 链式存储
 ## 顺序存储

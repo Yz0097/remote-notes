@@ -1,4 +1,4 @@
-#coding
+#coding #hash #cpp
 ## 哈希容器
 [[hash]]
 ### 1.set; unordered_set

@@ -1,4 +1,5 @@
-# translating
+#operating_system
+# Translating
 ## several terms
 ### 1. PTE
 - PTE(Page Table entity)

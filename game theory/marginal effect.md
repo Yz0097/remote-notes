@@ -1,4 +1,4 @@
-#crowdsensing    #game_theory  
+ #crowdsensing    #game_theory  
 
 在[[zhanFreeMarketMultiLeader2020]] 中设定payoff函数时，注意到两项：
 $$\begin{align}

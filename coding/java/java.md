@@ -1,3 +1,4 @@
+#java #coding
 # 1、必学语法基础
 第一是JDK集合、并发包以及它的核心类库(collections、serialization、streams、networking、multithreading、reflection、event、handling、NIO、localization以及其他)第二对面向编程，多线程，类的加载机制，锁的运用
 

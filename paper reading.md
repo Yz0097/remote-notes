@@ -1,3 +1,4 @@
+#reading 
 purple：结构
 green：物件
 blue：problem

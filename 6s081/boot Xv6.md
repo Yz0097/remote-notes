@@ -1,3 +1,4 @@
+#operating_system
 # xv6的启动过程
 相关代码: entry.S start.c main.c
 ## kernel/entry.S

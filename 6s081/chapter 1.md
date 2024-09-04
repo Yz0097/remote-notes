@@ -1,3 +1,5 @@
+
+#operating_system
 # operating system interface
 **tension** of 1. simple & narrow for easy implementation, 2. to offer many sophisticated features    
 **to solve**: design interface with a few machanisms for combine   

@@ -1,3 +1,4 @@
+#operating_system
 # 1 trace
 ## 如何创建一个系统调用
 [[https://zhuanlan.zhihu.com/p/668632093]]

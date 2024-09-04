@@ -1,3 +1,4 @@
+#deep_learning #reinforced_learning #python #coding 
 state (dict)    
 	legal_actions //state[legal_actions].keys()
 
