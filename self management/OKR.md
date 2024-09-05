@@ -1,8 +1,17 @@
-OKR: Objectives Key Results 目标与关键结果
+create date: 2024-09-05 19:52
+abstract: 
+tags: #认知科学 #workflow 
+## OKR
+Objectives Key Results 目标与关键结果
 https://www.bilibili.com/video/BV1UW4y1m7KA/?vd_source=f909c80e97269591dfb86a1ef6348e95
-1. 目标： 3个月(周期，每周期一个)，1个，鼓舞人心，告诉朋友
-2. 关键成果：围绕目标；可以量化；2-5个/忙，每个目标
-3. 资源：
+1. 目标： 3个月(周期，每周期一个)，1个，鼓舞人心，告诉朋友. [[hard to planning long term]], 需要进行训练
+2. 关键成果：围绕目标；可以量化；2-5个/每个周期，每个目标    
+
+**关键成果**可以拆分成两个部分:    
+1. 计划, 应当是分阶段的, 明确, 可执行的
+2. 标准, 用于衡量计划        
+   
+清点自己的**资源**, 找到差异化的关键成果, 并且帮助执行计划
 
 ## GTD
 Getting Things Done    
@@ -19,6 +28,6 @@ Getting Things Done
 
 ### 番茄工作法
 预估好工作的时间需要训练。    
-一个番茄内只做一件事。
+一个番茄内只做一件事。[[flow status]]
 
 **每周回顾番茄、GTD**

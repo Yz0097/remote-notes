@@ -1,8 +1,8 @@
 #operating_system
 # 1 trace
 ## 如何创建一个系统调用
-[[https://zhuanlan.zhihu.com/p/668632093]]
-[[https://fanxiao.tech/posts/2021-03-02-mit-6s081-notes/#25-lab-2-system-calls]]
+https://zhuanlan.zhihu.com/p/668632093
+https://fanxiao.tech/posts/2021-03-02-mit-6s081-notes/#25-lab-2-system-calls
 以创建trace为例
 ### 1 
 创建`kernel/sys_trace.c` 
