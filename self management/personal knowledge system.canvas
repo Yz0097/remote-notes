@@ -1,18 +1,31 @@
 {
 	"nodes":[
-		{"id":"513c41ab3b40728d","x":-40,"y":0,"width":300,"height":80,"type":"text","text":"生活化的, 随时捕捉计划, 思路. 应当是容易利用的 -->notion"},
-		{"id":"77711206632c8466","type":"text","text":"个人知识管理系统","x":-460,"y":-320,"width":200,"height":60,"color":"4"},
-		{"id":"571b10e5eb1be1ec","type":"text","text":"![[OKR#OKR]]","x":-80,"y":-480,"width":380,"height":160},
-		{"id":"bd6929acac08b51e","type":"text","text":"![[OKR#GTD]]\n","x":-80,"y":-260,"width":380,"height":160},
-		{"id":"e5703f51d78da33c","type":"text","text":"项目管理数据库","x":460,"y":-320,"width":180,"height":60},
-		{"id":"05027d52294eb4b9","type":"text","text":"知识数据库","x":473,"y":-540,"width":155,"height":60}
+		{"id":"4b38718bb673de21","type":"group","x":-120,"y":-540,"width":460,"height":500,"color":"#a5d9b7","label":"项目管理方法"},
+		{"id":"b3ee7c53dd761c33","type":"text","text":"OKR\n![[OKR#OKR]]","x":0,"y":-440,"width":181,"height":100},
+		{"id":"b7ad9707f44b8225","x":0,"y":-260,"width":181,"height":100,"type":"text","text":"GTD![[OKR#GTD]]"},
+		{"id":"a61c460de6553d6b","x":-42,"y":80,"width":265,"height":80,"type":"text","text":"习惯养成\n![[make it a habit]]"},
+		{"id":"77711206632c8466","type":"text","text":"个人知识管理系统","x":-560,"y":-320,"width":200,"height":60,"color":"4"},
+		{"id":"1b0ccb1d81303be9","x":-47,"y":-760,"width":275,"height":80,"type":"text","text":"卡片笔记法\n![[keep note]]"},
+		{"id":"e5703f51d78da33c","type":"text","text":"项目管理数据库","x":700,"y":-400,"width":180,"height":60},
+		{"id":"e6a93bbb5b9fe565","x":1100,"y":-260,"width":250,"height":50,"type":"text","text":"管理日程功能"},
+		{"id":"05027d52294eb4b9","type":"text","text":"知识数据库","x":713,"y":-580,"width":155,"height":60},
+		{"id":"bab10278bc760372","x":713,"y":-190,"width":150,"height":60,"type":"text","text":"番茄工作法"},
+		{"id":"513c41ab3b40728d","type":"text","text":"生活化的, 随时捕捉计划, 思路. 应当是容易利用的 -->notion","x":600,"y":-80,"width":300,"height":80}
 	],
 	"edges":[
-		{"id":"741044c577d75d27","fromNode":"77711206632c8466","fromSide":"right","toNode":"571b10e5eb1be1ec","toSide":"left"},
-		{"id":"9837c711d0a7f9d9","fromNode":"77711206632c8466","fromSide":"right","toNode":"bd6929acac08b51e","toSide":"left"},
-		{"id":"5ffa9a12a2cd923e","fromNode":"bd6929acac08b51e","fromSide":"bottom","toNode":"513c41ab3b40728d","toSide":"top"},
-		{"id":"74f82edc61054713","fromNode":"571b10e5eb1be1ec","fromSide":"right","toNode":"e5703f51d78da33c","toSide":"left"},
-		{"id":"7b1ac7a24242cc43","fromNode":"bd6929acac08b51e","fromSide":"right","toNode":"e5703f51d78da33c","toSide":"left"},
-		{"id":"8c10876949ef1bf1","fromNode":"05027d52294eb4b9","fromSide":"bottom","toNode":"e5703f51d78da33c","toSide":"top","label":"服务于"}
+		{"id":"8c10876949ef1bf1","fromNode":"05027d52294eb4b9","fromSide":"bottom","toNode":"e5703f51d78da33c","toSide":"top","label":"服务于"},
+		{"id":"f306c62a327b7245","fromNode":"77711206632c8466","fromSide":"right","toNode":"b3ee7c53dd761c33","toSide":"left"},
+		{"id":"f281fd6236582ed7","fromNode":"b3ee7c53dd761c33","fromSide":"right","toNode":"e5703f51d78da33c","toSide":"left"},
+		{"id":"9b21d9e4220eb010","fromNode":"77711206632c8466","fromSide":"right","toNode":"b7ad9707f44b8225","toSide":"left"},
+		{"id":"e0788117fade8898","fromNode":"b7ad9707f44b8225","fromSide":"right","toNode":"e5703f51d78da33c","toSide":"left"},
+		{"id":"5db0c0f319991ee9","fromNode":"b7ad9707f44b8225","fromSide":"bottom","toNode":"513c41ab3b40728d","toSide":"left"},
+		{"id":"b1ee54ef66903c48","fromNode":"a61c460de6553d6b","fromSide":"right","toNode":"513c41ab3b40728d","toSide":"left"},
+		{"id":"8cad7d79a38f206d","fromNode":"77711206632c8466","fromSide":"right","toNode":"a61c460de6553d6b","toSide":"left"},
+		{"id":"c3e676e2dcc8d1b2","fromNode":"e5703f51d78da33c","fromSide":"right","toNode":"e6a93bbb5b9fe565","toSide":"left"},
+		{"id":"033867768319f8cb","fromNode":"513c41ab3b40728d","fromSide":"right","toNode":"e6a93bbb5b9fe565","toSide":"left"},
+		{"id":"1160155e9b47cb17","fromNode":"77711206632c8466","fromSide":"right","toNode":"1b0ccb1d81303be9","toSide":"left"},
+		{"id":"339462ae6babee92","fromNode":"1b0ccb1d81303be9","fromSide":"right","toNode":"05027d52294eb4b9","toSide":"top"},
+		{"id":"d7b6e125d2e135de","fromNode":"bab10278bc760372","fromSide":"top","toNode":"e5703f51d78da33c","toSide":"bottom","label":"协助达成"},
+		{"id":"81436bf31ff66eec","fromNode":"a61c460de6553d6b","fromSide":"right","toNode":"e5703f51d78da33c","toSide":"left"}
 	]
 }
