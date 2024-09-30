@@ -12,9 +12,46 @@ start在机器态下设置
 	*2* 时钟中断 
 	*3* 将CPU id放入reg tp中,每一个CPU需要对应的位置
 初始化设置完成后, 进入内核态(supervisor/kernel mode), 使用mret指令(start.c line 49)
+```cpp
+// entry.S jumps here in machine mode on stack0.
+void
+start()
+{
+  // set M Previous Privilege mode to Supervisor, for mret.
+  unsigned long x = r_mstatus();
+  x &= ~MSTATUS_MPP_MASK;
+  x |= MSTATUS_MPP_S;
+  w_mstatus(x);
 
+  // set M Exception Program Counter to main, for mret.
+  // requires gcc -mcmodel=medany
+  w_mepc((uint64)main);
+
+  // disable paging for now.
+  w_satp(0);
+
+  // delegate all interrupts and exceptions to supervisor mode.
+  w_medeleg(0xffff);
+  w_mideleg(0xffff);
+  w_sie(r_sie() | SIE_SEIE | SIE_STIE | SIE_SSIE);
+
+  // ask for clock interrupts.
+  timerinit();
+
+  // keep each CPU's hartid in its tp register, for cpuid().
+  int id = r_mhartid();
+  w_tp(id);
+
+  // switch to supervisor mode and jump to main().
+  asm volatile("mret");
+}
+```
 ## kernel/main.c
 - supervisor mode -> user mode
+
+### kvminit()
+调用kvminit()函数, 初始化内核地址空间,随后调用kvminithart();
+如果不在0号CPU(主核)中, 直接调用kvminithart()
 ### userinit()函数
 函数定义在proc.c中,初始化了第一个用户进程. 执行initcode(一段汇编代码)如下:
 ```ASM
@@ -42,6 +79,7 @@ uchar initcode[] = {
 };
 ```
 
+###
 ### void scheduler(void)
 init: *1* fork+exec sh *2* wait(0) 清理僵尸进程
 sh: 控制台程序
