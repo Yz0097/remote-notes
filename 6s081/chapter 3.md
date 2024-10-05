@@ -226,11 +226,91 @@ kmem是一个链表, 包含一个spinlock, 和一个指向`run`的指针. run是
 # 3.6 进程地址空间
 
 >Each process has a separate page table, and when xv6 switches between processes, it also changes page tables. As Figure 2.3 shows, a process’s user memory starts at virtual address zero and can grow up to MAXVA (kernel/riscv.h:360), allowing a process to address in principle 256 Gigabytes of memory.
-
 每个进程拥有一张独立的页表, 当xv6在进程间切换时, 同时也会切换页表. 如图2.3, 一个进程的用户内存从虚拟地址0开始, 最多可以增长到`MAXVA`(kernel/riscv.h:360), 原则上允许一个进程最多占用256GB的内存.
 >When a process asks xv6 for more user memory, xv6 first uses kalloc to allocate physical pages. It then adds PTEs to the process’s page table that point to the new physical pages. Xv6 sets the PTE_W, PTE_X, PTE_R, PTE_U, and PTE_V flags in these PTEs. Most processes do not use the entire user address space; xv6 leaves PTE_V clear in unused PTEs.
-
 当一个进程向xv6请求更多的用户内存时, xv6首先使用`kalloc`来分配物理页. 随后它会将得到的PTEs添加到进程的页表中, 指向新的物理页. Xv6设置这些PTE的WXRUV标志位.大部分经常不会完整的使用用户地址空间. xv6会保持未使用的PTE的标志位V为0.
-
 >We see here a few nice examples of use of page tables. First, different processes’ page tables translate user addresses to different pages of physical memory, so that each process has private user memory. Second, each process sees its memory as having contiguous virtual addresses starting at zero, while the process’s physical memory can be non-contiguous. Third, the kernel maps a page with trampoline code at the top of the user address space, thus a single page of physical memory shows up in all address spaces.
+这里有一些页表的使用的很好的例子. 1. 不同进程的页表将用户地址翻译到物理内存的不同页中,因此每个进程拥有私有的用户内存. 2. 每个进程自己的内存可以对应连续的从0开始的虚拟地址, 同时进程的物理内存却是不连续的. 3. 内核在用户地址空间的顶部使用框架代码实现页面的映射, 然而一个单独的物理内存出现在所有的地址空间中.
+>Figure 3.4 shows the layout of the user memory of an executing process in xv6 in more detail. The stack is a single page, and is shown with the initial contents as created by exec. Strings containing the command-line arguments, as well as an array of pointers to them, are at the very top of the stack. Just under that are values that allow a program to start at main as if the function main(argc, argv) had just been called.
+
+图3.4更细节的展示了一个运行中的进程的用户内存的层次. 栈是一个单独的页, 图中也展示了`exec`初始化的内容. 字符串包含了命令行参数, 以及一个指向他们的指针数组.  这些参数位于栈的最顶端. 这些值之后是用于启动`main`的值, 以`main(argc, argv)`的形式调用.
+
+>To detect a user stack overflowing the allocated stack memory, xv6 places an inaccessible guard page right below the stack by clearing the PTE_U flag. If the user stack overflows and the process tries to use an address below the stack, the hardware will generate a page-fault exception because the guard page is inaccessible to a program running in user mode. A real-world operating system might instead automatically allocate more memory for the user stack when it overflows.
+
+为了检测用户栈是否从分配的栈内存中溢出, xv6通过清空页面的`PTE_U`标志, 在栈的下方设置了一个不可使用的保护页面. 如果用户栈溢出, 进程试图使用栈下方的地址时, 硬件会提出一个页面错误异常. 这是由于在用户模式下, 栈下方的保护页面是无法访问的. 一个现实中的操作系统在遇到溢出问题时, 可能会自动的给用户栈分配更多的空间.
+
+# 3.7 sbrk
+system call  `sbrk` 进程调用`sbrk`来减少或者增加其内存.
+`sbrk`会调用`growproc`函数.
+```cpp
+// kernel\proc\line 236
+// Grow or shrink user memory by n bytes.
+// Return 0 on success, -1 on failure.
+int
+growproc(int n)
+{
+  uint sz;
+  struct proc *p = myproc();
+
+  sz = p->sz;
+  if(n > 0){
+    if((sz = uvmalloc(p->pagetable, sz, sz + n)) == 0) {
+      return -1;
+    }
+  } else if(n < 0){
+    sz = uvmdealloc(p->pagetable, sz, sz + n);
+  }
+  p->sz = sz;
+  return 0;
+}
+```
+`uvmalloc`调用`kalloc`.
+`uvmdealloc`调用`uvmunmap`,`uvmunmap`会调用`walk`来确定PTE, 并使用`kfree`来释放物理内存
+xv6如何保证一片物理内存只会在一个进程的页表中被占用, 而不会被重复分配? -> kalloc维护的freelist
+释放用户内存(`uvmunmap`)需要检验用户页表(`walk`)
+
+# 3.8 exec
+从文件系统中的一个文件中初始化一个地址空间的用户部分.
+1. 使用`namei`([[chapter 8]]), 打开字符串path指向的文件.
+2. 读取ELF header
+3. 检验ELF binary -> magic number `\x7FELF`
+4. 创建一个新页表 func `proc_pagetable`
+5. 与书中不同, 使用uvmcreate创建页表, 使用mappages将ELF segments加载到页表中. (书中使用loadseg)
+### ELF格式
+`kernel/elf.h`
+#### 1. elf header
+```cpp
+struct elfhdr {
+  uint magic;  // must equal ELF_MAGIC
+  uchar elf[12];
+  ushort type;
+  ushort machine;
+  uint version;
+  uint64 entry;
+  uint64 phoff;
+  uint64 shoff;
+  uint flags;
+  ushort ehsize;
+  ushort phentsize;
+  ushort phnum;
+  ushort shentsize;
+  ushort shnum;
+  ushort shstrndx;
+};
+```
+
+#### 2. program section header `struct proghdr`
+```cpp
+struct proghdr {
+  uint32 type;
+  uint32 flags;
+  uint64 off;
+  uint64 vaddr;
+  uint64 paddr;
+  uint64 filesz;
+  uint64 memsz;
+  uint64 align;
+};
+```
+xv6系统中唯一的程序头
 
