@@ -276,6 +276,7 @@ xv6如何保证一片物理内存只会在一个进程的页表中被占用, 而
 3. 检验ELF binary -> magic number `\x7FELF`
 4. 创建一个新页表 func `proc_pagetable`
 5. 与书中不同, 使用uvmcreate创建页表, 使用mappages将ELF segments加载到页表中. (书中使用loadseg)
+6. 分配, 初始化user stack. 将argument string拷贝到stack顶端
 ### ELF格式
 `kernel/elf.h`
 #### 1. elf header
@@ -313,4 +314,8 @@ struct proghdr {
 };
 ```
 xv6系统中唯一的程序头
+     
+在一个程序头文件中filesz可能大于memsz, 1. xv6按页进行分配, 2. uvmalloc必须为程序分配足够的空间
+多余的空间只被分配并填充0, 不会被读取
+
 
