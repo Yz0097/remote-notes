@@ -275,8 +275,9 @@ xv6如何保证一片物理内存只会在一个进程的页表中被占用, 而
 2. 读取ELF header
 3. 检验ELF binary -> magic number `\x7FELF`
 4. 创建一个新页表 func `proc_pagetable`
-5. 与书中不同, 使用uvmcreate创建页表, 使用mappages将ELF segments加载到页表中. (书中使用loadseg)
-6. 分配, 初始化user stack. 将argument string拷贝到stack顶端
+5. 使用uvmcreate创建页表, 使用loadseg(line57)将ELF segments加载到页表中. 
+6. 分配, 初始化user stack. stack占用1页. 将argument string拷贝到stack顶端. 为ustack申请空间时会申请2页, 使用第二页. 另外一页用于防止ustack溢出(copyout函数发现使用到inaccessible的页时会goto bad)
+7. 
 ### ELF格式
 `kernel/elf.h`
 #### 1. elf header
