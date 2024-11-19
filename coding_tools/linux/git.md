@@ -82,3 +82,14 @@ Request
 git config --global core.autocrlf false
 
 
+# git clone 失败
+```bash
+failed to connect to github.com port 443 after 21136 ms: couldn‘t connect to server
+```
+
+windows设置 -> 网络 -> 代理 -> 手动设置代理 -> 端口 : 4780
+在git bash 中:
+```bash
+git config --global http.proxy 127.0.0.1:4780
+git config --global https.proxy 127.0.0.1:4780
+```

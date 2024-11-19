@@ -11,6 +11,11 @@ auto i = exp.begin();
 cout<<i->first;    //0
 cout<<i->second;   //1
 ```
+map中是否包含了某个数字,例：
+```cpp
+unordered_map <int,int> exp{pair(0,1), pair(1,2)};
+exp.count(0) //输出
+```
 
 ## 数组
 ### 队列
