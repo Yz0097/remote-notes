@@ -1,5 +1,5 @@
 #coding #hash #cpp
-## 哈希容器
+# 哈希容器
 [[hash]]
 ### 1.set; unordered_set
 只能使用迭代器进行访问
@@ -17,7 +17,7 @@ unordered_map <int,int> exp{pair(0,1), pair(1,2)};
 exp.count(0) //输出
 ```
 
-## 数组
+# 数组
 ### 队列
 - deque 
 ```cpp
@@ -115,3 +115,26 @@ a += b; //a = "aaabbb"
 a.append(b); // a = "aaabbbbbb";
 ```
 - `+`方式本质是 `s = new StringBuilder(s).append("a") .toString();`
+
+# 链表
+双向链表list
+```Cpp
+list<int> myList = {1, 2, 3, 4, 5};
+```
+
+遍历列表
+```cpp
+// 使用迭代器遍历
+for (auto it = myList.begin(); it!= myList.end(); ++it) {
+	cout << *it << " ";
+}
+
+// 使用范围for循环遍历
+for (int num : myList) {
+	cout << num << " ";
+}
+
+// 使用std::for_each遍历
+for_each(myList.begin(), myList.end(), print);
+cout << endl;
+```

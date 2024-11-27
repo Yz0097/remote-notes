@@ -16,7 +16,7 @@ pxh> commander takeoff
 
 ```
 
-## px4 make taargets
+## px4 make targets
 ```bash
 make [VENDOR_][MODEL][_VARIANT] [VIEWER_MODEL_DEBUGGER_WORLD]
 ```
@@ -30,3 +30,103 @@ make [VENDOR_][MODEL][_VARIANT] [VIEWER_MODEL_DEBUGGER_WORLD]
 make list_config_targets
 ```
 列出所有选项
+
+
+# sitl - default
+
+```shell
+syz@ubuntu:~/PX4-Autopilot$ make -n px4_sitl gazebo-classic
+# check if the desired cmake configuration matches the cache then CMAKE_CACHE_CHECK stays empty
+# change to build folder which fails if it doesn't exist and CACHED_CMAKE_OPTIONS stays empty
+# fetch all previously configured and cached options from the build folder and transform them into the OPTION=VALUE format without type (e.g. :BOOL)
+# transform the options in CMAKE_ARGS into the OPTION=VALUE format without -D
+# find each currently desired option in the already cached ones making sure the complete configured string value is the same
+# if the complete list of desired options is found in the list of verified options we don't need to reconfigure and CMAKE_CACHE_CHECK stays empty
+# make sure to start from scratch when switching from GNU Make to Ninja
+if [ Ninja = "Ninja" ] && [ -e "/home/syz/PX4-Autopilot/build/px4_sitl_default"/Makefile ]; then rm -rf "/home/syz/PX4-Autopilot/build/px4_sitl_default"; fi
+# make sure to start from scratch if ninja build file is missing
+if [ Ninja = "Ninja" ] && [ ! -f "/home/syz/PX4-Autopilot/build/px4_sitl_default"/build.ninja ]; then rm -rf "/home/syz/PX4-Autopilot/build/px4_sitl_default"; fi
+# only excplicitly configure the first build, if cache file already exists the makefile will rerun cmake automatically if necessary
+if [ ! -e "/home/syz/PX4-Autopilot/build/px4_sitl_default"/CMakeCache.txt ] || [  ]; then mkdir -p "/home/syz/PX4-Autopilot/build/px4_sitl_default" && cd "/home/syz/PX4-Autopilot/build/px4_sitl_default" && cmake "/home/syz/PX4-Autopilot" -G"Ninja"  -DCONFIG=px4_sitl_default || (rm -rf "/home/syz/PX4-Autopilot/build/px4_sitl_default"); fi
+# run the build for the specified target
+cmake --build "/home/syz/PX4-Autopilot/build/px4_sitl_default" --  gazebo-classic
+```
+
+## ardupilot-gazebo运行脚本
+- Open a terminal and run the commands below:
+```
+cd ~/uav/ardupilot/Tools/autotest
+./sim_vehicle.py -v ArduCopter -f gazebo-iris --console -I0
+```
+- Open a new terminal and run:
+```
+gazebo --verbose ~/uav/ardupilot_gazebo/worlds/iris_ardupilot.world
+```
+- After seeing "APM: EKF2 IMU0 is using GPS" message in console, you can use the commands below in the first terminal for takeoff test:
+```
+mode guided
+arm throttle
+takeoff 5
+```
+
+# wind plug
+Tools/simulation/gazebo-classic/worlds中修改
+empty.world修改为
+```xml
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://asphalt_plane</uri>
+    </include>
+    <plugin name='wind_plugin' filename='libgazebo_wind_plugin.so'>
+      <frameId>base_link</frameId>
+      <robotNamespace/>
+      <windVelocityMean>SET_YOUR_WIND_SPEED</windVelocityMean>
+      <windVelocityMax>20.0</windVelocityMax>
+      <windVelocityVariance>0</windVelocityVariance>
+      <windDirectionMean>0 1 0</windDirectionMean>
+      <windDirectionVariance>0</windDirectionVariance>
+      <windGustStart>0</windGustStart>
+      <windGustDuration>0</windGustDuration>
+      <windGustVelocityMean>0</windGustVelocityMean>
+      <windGustVelocityMax>20.0</windGustVelocityMax>
+      <windGustVelocityVariance>0</windGustVelocityVariance>
+      <windGustDirectionMean>1 0 0</windGustDirectionMean>
+      <windGustDirectionVariance>0</windGustDirectionVariance>
+      <windPubTopic>world_wind</windPubTopic>
+    </plugin>
+    <physics name='default_physics' default='0' type='ode'>
+      <gravity>0 0 -9.8066</gravity>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>10</iters>
+          <sor>1.3</sor>
+          <use_dynamic_moi_rescaling>0</use_dynamic_moi_rescaling>
+        </solver>
+        <constraints>
+          <cfm>0</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>100</contact_max_correcting_vel>
+          <contact_surface_layer>0.001</contact_surface_layer>
+        </constraints>
+      </ode>
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+      <magnetic_field>6.0e-6 2.3e-5 -4.2e-5</magnetic_field>
+    </physics>
+  </world>
+</sdf>
+```
+
+
+# commander
+px4终端中
+`commander takeoff`
+`commander land`
