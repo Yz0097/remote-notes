@@ -43,9 +43,9 @@ priority_queue  |
 
 table example    
 
-| Column 1 | Column 2  |	Column 3 |
-|:--------| :---------:|--------:|
-| centered 文本居左 | right-aligned 文本居中 |right-aligned 文本居右|
+| Column 1      |      Column 2      |           Column 3 |
+| :------------ | :----------------: | -----------------: |
+| centered 文本居左 | right-aligned 文本居中 | right-aligned 文本居右 |
 
 # 排序队列
 

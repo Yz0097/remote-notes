@@ -86,7 +86,7 @@ empty.world修改为
     <plugin name='wind_plugin' filename='libgazebo_wind_plugin.so'>
       <frameId>base_link</frameId>
       <robotNamespace/>
-      <windVelocityMean>SET_YOUR_WIND_SPEED</windVelocityMean>
+      <windVelocityMean>15.0</windVelocityMean>
       <windVelocityMax>20.0</windVelocityMax>
       <windVelocityVariance>0</windVelocityVariance>
       <windDirectionMean>0 1 0</windDirectionMean>
@@ -125,8 +125,79 @@ empty.world修改为
 </sdf>
 ```
 
+修改部分在于其中一个插件
+```xml
+<plugin name='wind_plugin' filename='libgazebo_wind_plugin.so'>
+  <frameId>base_link</frameId>
+  <robotNamespace/>
+  <windVelocityMean>15.0</windVelocityMean>
+  <windVelocityMax>20.0</windVelocityMax>
+  <windVelocityVariance>0</windVelocityVariance>
+  <windDirectionMean>0 1 0</windDirectionMean>
+  <windDirectionVariance>0</windDirectionVariance>
+  <windGustStart>0</windGustStart>
+  <windGustDuration>0</windGustDuration>
+  <windGustVelocityMean>0</windGustVelocityMean>
+  <windGustVelocityMax>20.0</windGustVelocityMax>
+  <windGustVelocityVariance>0</windGustVelocityVariance>
+  <windGustDirectionMean>1 0 0</windGustDirectionMean>
+  <windGustDirectionVariance>0</windGustDirectionVariance>
+  <windPubTopic>world_wind</windPubTopic>
+</plugin>
+```
+修改`windVelocityMean`和`windVelocityMax`, 平均值应该小于最大值.
+velocity variance风速变量的单位是$(m/s)^2$
+方向变量基于正态分布, 将扰动添加到模拟中.
+Gust 狂风.`windGustStart`和`windGustDuration`决定了狂风的开始时间和持续时间
 
 # commander
 px4终端中
 `commander takeoff`
 `commander land`
+
+
+```bash
+cd /home/syz/PX4-Autopilot/build/px4_sitl_defau...X4-Autopilot /home/syz/PX4-Autopilot/build/px4_sitl_default
+SITL ARGS
+sitl_bin: /home/syz/PX4-Autopilot/build/px4_sitl_default/bin/px4
+debugger: none
+model: iris
+world: none
+src_path: /home/syz/PX4-Autopilot
+build_path: /home/syz/PX4-Autopilot/build/px4_sitl_default
+GAZEBO_PLUGIN_PATH :/home/syz/PX4-Autopilot/build/px4_sitl_default/build_gazebo-classic
+GAZEBO_MODEL_PATH :/home/syz/PX4-Autopilot/Tools/simulation/gazebo-classic/sitl_gazebo-classic/models
+LD_LIBRARY_PATH :/home/syz/PX4-Autopilot/build/px4_sitl_default/build_gazebo-classic
+empty world, setting empty.world as default
+Using: /home/syz/PX4-Autopilot/Tools/simulation/gazebo-classic/sitl_gazebo-classic/models/iris/iris.sdf
+Error Code 12 Msg: Unable to find uri[model://gps]
+SITL COMMAND: "/home/syz/PX4-Autopilot/build/px4_sitl_default/bin/px4" "/home/syz/PX4-Autopilot/build/px4_sitl_default"/etc
+
+______  __   __    ___ 
+| ___ \ \ \ / /   /   |
+| |_/ /  \ V /   / /| |
+|  __/   /   \  / /_| |
+| |     / /^\ \ \___  |
+\_|     \/   \/     |_/
+
+px4 starting.
+
+INFO  [px4] startup script: /bin/sh etc/init.d-posix/rcS 0
+INFO  [init] found model autostart file as SYS_AUTOSTART=10015
+INFO  [param] selected parameter default file parameters.bson
+INFO  [param] importing from 'parameters.bson'
+INFO  [parameters] BSON document size 404 bytes, decoded 404 bytes (INT32:14, FLOAT:6)
+INFO  [param] selected parameter backup file parameters_backup.bson
+Gazebo multi-robot simulator, version 11.14.0
+Copyright (C) 2012 Open Source Robotics Foundation.
+Released under the Apache 2 License.
+http://gazebosim.org
+
+[Msg] Waiting for master.
+[Msg] Connected to gazebo master @ http://127.0.0.1:11345
+[Msg] Publicized address: 192.168.137.19
+INFO  [dataman] data manager file './dataman' size is 7872608 bytes
+INFO  [init] PX4_SIM_HOSTNAME: localhost
+INFO  [simulator_mavlink] Waiting for simulator to accept connection on TCP port 4560
+
+```
