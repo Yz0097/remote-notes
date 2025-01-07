@@ -9,6 +9,8 @@ observation->classifer(estimate reliability) ->aggregation policy net
 
 ### Certifiably Robust Policy Learning against Adversarial Communication in Multi-agent Systems
 理论分析证明, 利用恶意交流信息, message-ensemble policy, multiple randomly ablated message sets 2023
+使用完全善意交流环境训练的智能体受到恶意交流攻击时十分脆弱, 如果训练智能体时就加入恶意交流呢
+page2 [45]恶意训练, 这篇文章的恶意算法有许多攻击未覆盖到
 
 ### Mis-spoke or mis-lead_ Achieving Robustness in Multi-Agent Communicative Reinforcement Learning against Adversarial Multi-Agent Communication with Adversarial Attacks
 1. 用于生成恶意信息的模型
@@ -16,6 +18,7 @@ observation->classifer(estimate reliability) ->aggregation policy net
 3. 将恶意交流攻击建模为双方零和博弈, 提出基于博弈论的方法 R-MACRL, 改进最差情况下的防御表现
 节点的策略包括行为策略和消息策略, 恶意节点包括第三个策略恶意策略, 是在消息空间中的一个行动.
 恶意节点传出恶意消息, 恶意消息是原消息与恶意策略信息的组合, 恶意节点采取和原策略一样的行动来防止被发现.
+每个恶意节点维护一个DNN,确定一个高斯分布, 实施攻击时从分布中采样作为恶意消息
 一个时间步里所有消息的集合会被交流协议communication protocol处理为一个$m^{in}$,分发给每个节点
 
 
@@ -33,4 +36,4 @@ uav swarm 的尺度 10~100架  100架以上
 无人机集群 边缘计算 视频传输任务 
 无人机集群拓扑结构的变化和空间中的信号干扰
 
-在
+### Robust Reinforcement Learning as a Stackelberg Game via Adaptively-Regularized Adversarial Training
